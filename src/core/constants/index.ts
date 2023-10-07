@@ -1,0 +1,8 @@
+export const SEQUELIZE = 'SEQUELIZE'
+export const DEVELOPMENT = 'development'
+export const TEST = 'test'
+export const PRODUCTION = 'production'
+export const USER_REPOSITORY = 'USER_REPOSITORY'
+export const WALLET_REPOSITORY = 'WALLET_REPOSITORY'
+export const TRANSACTION_REPOSITORY = 'TRANSACTION_REPOSITORY'
+export const SOURCE_REPOSITORY = 'SOURCE_REPOSITORY'
