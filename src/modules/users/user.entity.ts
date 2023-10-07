@@ -31,7 +31,7 @@ export class User extends Model<User> {
         unique: true,
         allowNull: false,
     })
-    username: string
+    phone_number: string
 
     @Column({
         type: DataType.STRING,
