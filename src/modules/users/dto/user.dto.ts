@@ -1,4 +1,4 @@
-import { IsNotEmpty, MinLength, IsEmail, IsEnum } from 'class-validator';
+import { IsNotEmpty, MinLength, IsEmail, IsEnum, IsDate } from 'class-validator'
 
 enum Gender {
     MALE = 'male',
@@ -8,19 +8,27 @@ enum Gender {
 export class UserDto {
 
     @IsNotEmpty()
-    readonly name: string;
+    readonly first_name: string
+
+    @IsNotEmpty()
+    readonly last_name: string
+
+    @IsNotEmpty()
+    readonly address: string
+
+    @IsNotEmpty()
+    readonly phone_number: string
+
+    @IsNotEmpty()
+    @IsDate()
+    readonly dob: Date
 
     @IsNotEmpty()
     @IsEmail()
-    readonly email: string;
+    readonly email: string
 
     @IsNotEmpty()
     @MinLength(6)
-    readonly password: string;
+    readonly password: string
 
-    @IsNotEmpty()
-    @IsEnum(Gender, {
-        message: 'gender must be either male or female',
-    })
-    readonly gender: Gender;
 }
