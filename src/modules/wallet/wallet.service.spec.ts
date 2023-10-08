@@ -1,16 +1,20 @@
+import { config } from "dotenv"
 import { Test, TestingModule } from '@nestjs/testing'
+import { WalletsService } from './wallet.service'
+import { walletsProviders } from './wallet.providers'
 
-import { PostsService } from './wallet.service'
 
-describe('PostsService', () => {
-  let service: PostsService
+describe('WalletsService', () => {
+  let service: WalletsService
 
   beforeEach(async () => {
+    config()
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PostsService],
+      providers: [WalletsService, ...walletsProviders],
+      exports: [WalletsService]
     }).compile()
 
-    service = module.get<PostsService>(PostsService)
+    service = module.get<WalletsService>(WalletsService)
   })
 
   it('should be defined', () => {

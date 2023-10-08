@@ -1,16 +1,22 @@
 import { Test, TestingModule } from '@nestjs/testing'
+import { config } from "dotenv"
 
-import { PostsController } from './wallet.controller'
+import { WalletController } from './wallet.controller'
+import { WalletsService } from './wallet.service'
+import { walletsProviders } from './wallet.providers'
 
-describe('Posts Controller', () => {
-  let controller: PostsController
+describe('Wallets Controller', () => {
+  let controller: WalletController
 
   beforeEach(async () => {
+    config()
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [PostsController],
+      providers: [WalletsService, ...walletsProviders],
+      controllers: [WalletController],
+      exports: [WalletsService]
     }).compile()
 
-    controller = module.get<PostsController>(PostsController)
+    controller = module.get<WalletController>(WalletController)
   })
 
   it('should be defined', () => {
