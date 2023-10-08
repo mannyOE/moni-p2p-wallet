@@ -56,29 +56,29 @@ Before you can run the project, ensure you have the following prerequisites inst
 
    ```env
    # Database configuration
-  DB_HOST=
-  DB_PORT=
-  DB_USER=
-  DB_PASS=
-  DB_DIALECT=postgres
-  DB_NAME_TEST=
-  DB_NAME_DEVELOPMENT=
-  DB_NAME_PRODUCTION=
+    DB_HOST=
+    DB_PORT=
+    DB_USER=
+    DB_PASS=
+    DB_DIALECT=postgres
+    DB_NAME_TEST=
+    DB_NAME_DEVELOPMENT=
+    DB_NAME_PRODUCTION=
 
-  # JWT (JSON Web Token) Configuration
-  JWTKEY=
-  TOKEN_EXPIRATION=2h
-  BEARER=Bearer
+    # JWT (JSON Web Token) Configuration
+    JWTKEY=
+    TOKEN_EXPIRATION=2h
+    BEARER=Bearer
 
-  # Application Port
-  PORT=7600
+    # Application Port
+    PORT=7600
 
-  # Paystack API Keys
-  PAYSTACK_SECRET=
-  PAYSTACK_PUBLIC=
+    # Paystack API Keys
+    PAYSTACK_SECRET=
+    PAYSTACK_PUBLIC=
 
-  # Database URL (You can use this format or specify individual variables)
-  DATABASE_URL=
+    # Database URL (You can use this format or specify individual variables)
+    DATABASE_URL=
 
    ```
 
