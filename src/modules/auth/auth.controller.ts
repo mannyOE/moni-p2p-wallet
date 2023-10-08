@@ -2,7 +2,7 @@ import { Controller, Body, Post, UseGuards, Request, HttpException, HttpStatus }
 import { AuthGuard } from '@nestjs/passport'
 
 import { AuthService } from './auth.service'
-import { DoesUserExist, RegistrationValidator } from '../../core/guards/doesUserExist.guard'
+import { DoesUserExist, LoginValidator, RegistrationValidator } from '../../core/guards/doesUserExist.guard'
 import { UserInterface } from '../users/user.interfaces'
 import { RegisterValidationSchema } from './auth.validators'
 
@@ -10,7 +10,7 @@ import { RegisterValidationSchema } from './auth.validators'
 export class AuthController {
     constructor(private authService: AuthService) { }
 
-    @UseGuards(AuthGuard('local'))
+    @UseGuards(LoginValidator, AuthGuard('local'))
     @Post('login')
     async login (@Request() req) {
         return await this.authService.login(req.user)

@@ -5,6 +5,7 @@ import { JwtModule } from '@nestjs/jwt'
 import { AuthService } from './auth.service'
 import { AuthController } from './auth.controller'
 import { UsersModule } from '../users/users.module'
+import { WalletsModule } from '../wallet/wallet.module'
 import { LocalStrategy } from './local.strategy'
 import { JwtStrategy } from './jwt.strategy'
 
@@ -12,6 +13,7 @@ import { JwtStrategy } from './jwt.strategy'
   imports: [
     PassportModule,
     UsersModule,
+    WalletsModule,
     JwtModule.register({
       secret: process.env.JWTKEY,
       signOptions: { expiresIn: process.env.TOKEN_EXPIRATION },

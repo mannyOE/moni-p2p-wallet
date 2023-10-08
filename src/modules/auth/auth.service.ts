@@ -1,20 +1,22 @@
 import { Injectable } from '@nestjs/common'
 import * as bcrypt from 'bcrypt'
 import { JwtService } from '@nestjs/jwt'
-
+import { v4 as uuidv4 } from 'uuid'
 import { UsersService } from '../users/users.service'
 import { UserInterface } from '../users/user.interfaces'
+import { WalletsService } from '../wallet/wallet.service'
 
 @Injectable()
 export class AuthService {
     constructor(
         private readonly userService: UsersService,
+        private readonly walletService: WalletsService,
         private readonly jwtService: JwtService,
     ) { }
 
-    async validateUser (username: string, pass: string) {
+    async validateUser (email: string, pass: string) {
         // find if user exist with this email
-        const user = await this.userService.findOneByEmail(username)
+        const user = await this.userService.findOneByEmail(email)
         if (!user) {
             return null
         }
@@ -49,6 +51,13 @@ export class AuthService {
         // generate token
         const token = await this.generateToken(result)
 
+        // create user wallet
+        await this.walletService.create({
+            userId: result.id,
+            balance: 0,
+            previous_balance: 0,
+            reference: uuidv4()
+        })
         // return the user and the token
         return { user: result, token }
     }

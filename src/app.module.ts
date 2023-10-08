@@ -6,7 +6,7 @@ import { AppService } from './app.service'
 import { DatabaseModule } from './core/database/database.module'
 import { UsersModule } from './modules/users/users.module'
 import { AuthModule } from './modules/auth/auth.module'
-import { PostsModule } from './modules/wallet/wallet.module'
+import { WalletsModule } from './modules/wallet/wallet.module'
 
 @Module({
   imports: [
@@ -14,7 +14,7 @@ import { PostsModule } from './modules/wallet/wallet.module'
     DatabaseModule,
     UsersModule,
     AuthModule,
-    PostsModule,
+    WalletsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
