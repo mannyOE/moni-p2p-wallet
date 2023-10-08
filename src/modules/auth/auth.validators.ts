@@ -43,6 +43,6 @@ export const RegisterValidationSchema = Joi.object().keys({
 
 
 export const LoginValidationSchema = Joi.object().keys({
-  email: Joi.string().email().message('Provide a valid email address'),
-  password: Joi.string().regex(/^(?=.*\d)(?=.*[a-zA-Z]).+$/).message('Password must contain at least one letter and one number')
+  email: Joi.string().required().email().message('Provide a valid email address'),
+  password: Joi.string().required().regex(/^(?=.*\d)(?=.*[a-zA-Z]).+$/).message('Password must contain at least one letter and one number')
 })
