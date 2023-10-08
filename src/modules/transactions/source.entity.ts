@@ -9,6 +9,12 @@ export class Source extends Model<Source> {
   })
   card_pan: string
 
+  @Column({
+    type: DataType.TEXT,
+    allowNull: true,
+  })
+  signature: string
+
   @ForeignKey(() => User)
   @Column({
     type: DataType.INTEGER,

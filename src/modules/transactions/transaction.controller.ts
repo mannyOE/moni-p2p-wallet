@@ -2,10 +2,28 @@ import { Controller, Get, Post, Put, Delete, Param, Body, NotFoundException, Use
 import { AuthGuard } from '@nestjs/passport'
 
 import { TransactionService } from './transaction.service'
-import { Transaction as TransactionEntity } from './transaction.entity'
+import { PaystackValidator, TransferValidator } from '../../core/guards/doesUserExist.guard'
 
 @Controller('transaction')
-export class WalletController {
+export class TransactionController {
   constructor(private readonly transactionService: TransactionService) { }
+
+  @UseGuards(AuthGuard('jwt'))
+  @Post("initiate")
+  async initiate (@Body() body, @Request() req): Promise<any> {
+    return await this.transactionService.create(body.amount, req.user)
+  }
+
+  @UseGuards(AuthGuard('jwt'), TransferValidator)
+  @Post("transfer")
+  async transfer (@Body() body, @Request() req): Promise<any> {
+    return await this.transactionService.makeTransferTransaction(body.amount, body.email, req.user.id)
+  }
+
+  @UseGuards(PaystackValidator)
+  @Post("paystack-webhook")
+  async paystackWebhook (@Body() body): Promise<any> {
+    return await this.transactionService.savePaystackTransaction(body)
+  }
 
 }

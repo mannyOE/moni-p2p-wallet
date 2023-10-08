@@ -1,5 +1,4 @@
-import { Controller, Body, Post, UseGuards, Request, HttpException, HttpStatus } from '@nestjs/common'
-import { AuthGuard } from '@nestjs/passport'
+import { Controller, Body, Post, UseGuards } from '@nestjs/common'
 
 import { AuthService } from './auth.service'
 import { DoesUserExist, LoginValidator, RegistrationValidator } from '../../core/guards/doesUserExist.guard'
