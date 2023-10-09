@@ -7,6 +7,7 @@ import { WalletsService } from '../wallet/wallet.service'
 import { User } from '../users/user.entity'
 import { Source } from './source.entity'
 import { UsersService } from '../users/users.service'
+import { ChargeEvent } from './transaction.interfaces'
 
 @Injectable()
 export class TransactionService {

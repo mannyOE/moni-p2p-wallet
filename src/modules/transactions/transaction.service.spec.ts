@@ -10,6 +10,7 @@ import { UsersModule } from '../users/users.module'
 import { transactionProviders } from './transaction.providers'
 import { WalletsService } from '../wallet/wallet.service'
 import { UsersService } from '../users/users.service'
+import { ChargeEvent } from './transaction.interfaces'
 
 testDatabaseConfig.authenticate().then(() => {
 

@@ -14,6 +14,7 @@ import { AuthController } from '../auth/auth.controller'
 import { TransactionService } from './transaction.service'
 import { transactionProviders } from './transaction.providers'
 import { WalletsService } from '../wallet/wallet.service'
+import { ChargeEvent } from './transaction.interfaces'
 
 
 testDatabaseConfig.authenticate().then(() => {

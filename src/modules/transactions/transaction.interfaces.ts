@@ -65,7 +65,7 @@ interface Data {
   plan: any // You can specify a more specific type if needed
 }
 
-interface ChargeEvent {
+export interface ChargeEvent {
   event: string
   data: Data
 }
