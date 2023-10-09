@@ -1,4 +1,4 @@
-import { Controller, Body, Post, UseGuards } from '@nestjs/common'
+import { Controller, Body, Post, UseGuards, HttpException, HttpStatus } from '@nestjs/common'
 
 import { AuthService } from './auth.service'
 import { DoesUserExist, LoginValidator, RegistrationValidator } from '../../core/guards/doesUserExist.guard'
@@ -12,6 +12,15 @@ export class AuthController {
     @Post('login')
     async login (@Body() req) {
         const user = await this.authService.validateUser(req.email, req.password)
+        if (!user) {
+            throw new HttpException(
+                {
+                    message: 'Account not found', // Replace with your custom error message
+                    details: "No user found with these credentials", // You can include additional error information
+                },
+                HttpStatus.BAD_REQUEST, // You can choose an appropriate HTTP status code
+            )
+        }
         return await this.authService.login(user)
     }
 

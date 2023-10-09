@@ -66,7 +66,7 @@ export class TransactionService {
           reference: charge.data.reference
         }
       })
-      if (existingTrxn) {
+      if (!existingTrxn) {
         // create the transaction
         await this.transactionRepository.create<Transaction>({
           reference: charge.data.reference,

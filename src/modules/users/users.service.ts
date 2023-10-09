@@ -6,7 +6,7 @@ import { UserInterface } from './user.interfaces'
 
 @Injectable()
 export class UsersService {
-    constructor(@Inject(USER_REPOSITORY) private readonly userRepository: typeof User) { }
+    constructor(@Inject(USER_REPOSITORY) public userRepository: typeof User) { }
 
     async create (user: UserInterface): Promise<User> {
         return await this.userRepository.create<User>(user)

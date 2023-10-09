@@ -30,7 +30,7 @@ export class DoesUserExist implements CanActivate {
 
 @Injectable()
 export class RegistrationValidator implements CanActivate {
-    constructor(private readonly userService: UsersService) { }
+    constructor() { }
 
     canActivate (
         context: ExecutionContext,
@@ -61,7 +61,7 @@ export class RegistrationValidator implements CanActivate {
 
 @Injectable()
 export class LoginValidator implements CanActivate {
-    constructor(private readonly userService: UsersService) { }
+    constructor() { }
 
     canActivate (
         context: ExecutionContext,
